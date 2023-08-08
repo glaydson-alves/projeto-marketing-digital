@@ -45,6 +45,10 @@ endereco.addEventListener("blur", function(){
         alert("Texto demasiadamente grande")
         endereco.style.border = "2px solid red"
     }
+    if(endereco.value == ""){
+        endereco.style.border = "2px solid red"
+
+    }
     else { 
         alert("endereço OK!")
         endereco.style.border = "2px solid yellow"
@@ -55,20 +59,21 @@ endereco.addEventListener("blur", function(){
 let email = document.querySelector("#email")
 let confirmar = document.querySelector("#confirmar")
 
-let minusculo = email.value.toLowerCase()// tornar o value minusculo
+let minusculo = email.value.toLowerCase()
+//  O método toLowerCase() retorna o valor da string original convertido para minúsculo.
 
 email.addEventListener("keyup", function(){
     confirmar.value = email.value
     
     if(minusculo.indexOf("@") == -1 || minusculo.indexOf(".com") == -1){
-
+        email.style.border = "2px solid red"
     }
     else{
 
     }
 
     console.log(email.value.indexOf("@"))
-    // indexOf indentifica se no value existe algum caractere que esta sendo procurado
+    // indexOf("caractere") retorna o primeiro índice em que o elemento pode ser encontrado no array, retorna -1 caso o mesmo não esteja presente.
 })
 
 // ( || pipe pipe)

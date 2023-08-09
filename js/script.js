@@ -64,16 +64,57 @@ let minusculo = email.value.toLowerCase()
 
 email.addEventListener("keyup", function(){
     confirmar.value = email.value
-    
-    if(minusculo.indexOf("@") == -1 || minusculo.indexOf(".com") == -1){
-        email.style.border = "2px solid red"
+    if(minusculo.indexOf('@') == -1 || minusculo.indexOf('.') == -1){
+        // ( || pipe pipe)
+        console.log("Email inválido")
+        // email.style.border = "1px solid red"
+        email.classList.add("border-danger")
+        email.classList.remove("border-success")
     }
     else{
+        console.log("Email válido")
+            // indexOf("caractere") retorna o primeiro índice em que o elemento pode ser encontrado no array, retorna -1 caso o mesmo não esteja presente.
 
+        // email.style.border = "1px solid green"
+        email.classList.remove("border-danger")
+        email.classList.add("border-success") 
     }
-
     console.log(email.value.indexOf("@"))
-    // indexOf("caractere") retorna o primeiro índice em que o elemento pode ser encontrado no array, retorna -1 caso o mesmo não esteja presente.
 })
 
-// ( || pipe pipe)
+let senha = document.querySelector("#senha")
+let btn_olho = document.querySelector(".fa-eye")
+
+//()=>{} isto é uma arrow function, ou seja, é uma versão resumida da função anônima
+btn_olho.addEventListener("click", ()=>{
+    if(btn_olho.classList.contains("fa-eye")){
+        // console.log("A classe existe")
+        btn_olho.classList.remove("fa-eye")
+        btn_olho.classList.add("fa-eye-slash")
+
+        // setAttribute serve para trocar o atributo de uma tag
+        senha.setAttribute("type", "text")
+    }
+    else{
+        // console.log("A classe não existe")
+        btn_olho.classList.remove("fa-eye-slash")
+        btn_olho.classList.add("fa-eye")
+
+        senha.setAttribute("type", "password")
+        
+    }
+})
+
+// PEGANDO DADOS DO CAMPO RADIO
+
+let escolaridade = document.querySelectorAll("input[name=escolaridade]")//querySelectorAll serve para pegar mais de uma tag com a mesma class ou atributo e o sem All é só pra uma tag
+let btnEscolaridade = document.querySelector("#btnEscolaridade")
+
+btnEscolaridade.addEventListener("click", (evento)=>{
+    console.log(evento)
+    evento.preventDefault()//Esta função irá impedir o comportamento padrão de botão
+
+    console.log(escolaridade[1])
+})
+
+

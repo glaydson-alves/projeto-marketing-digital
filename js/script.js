@@ -47,7 +47,6 @@ endereco.addEventListener("blur", function(){
     }
     if(endereco.value == ""){
         endereco.style.border = "2px solid red"
-
     }
     else { 
         alert("endereço OK!")
@@ -59,12 +58,13 @@ endereco.addEventListener("blur", function(){
 let email = document.querySelector("#email")
 let confirmar = document.querySelector("#confirmar")
 
+email.addEventListener("keyup", function(){
+    
 let minusculo = email.value.toLowerCase()
 //  O método toLowerCase() retorna o valor da string original convertido para minúsculo.
 
-email.addEventListener("keyup", function(){
     confirmar.value = email.value
-    if(minusculo.indexOf('@') == -1 || minusculo.indexOf('.') == -1){
+    if(minusculo.indexOf('@') == -1 || minusculo.indexOf('.com') == -1){
         // ( || pipe pipe)
         console.log("Email inválido")
         // email.style.border = "1px solid red"
@@ -76,13 +76,15 @@ email.addEventListener("keyup", function(){
             // indexOf("caractere") retorna o primeiro índice em que o elemento pode ser encontrado no array, retorna -1 caso o mesmo não esteja presente.
 
         // email.style.border = "1px solid green"
+        email.classList.add("border-success")
         email.classList.remove("border-danger")
-        email.classList.add("border-success") 
+         
     }
     console.log(email.value.indexOf("@"))
 })
+// SENHA
 
-let senha = document.querySelector("#senha")
+let senha = document.querySelector("#password")
 let btn_olho = document.querySelector(".fa-eye")
 
 //()=>{} isto é uma arrow function, ou seja, é uma versão resumida da função anônima
@@ -113,8 +115,74 @@ let btnEscolaridade = document.querySelector("#btnEscolaridade")
 btnEscolaridade.addEventListener("click", (evento)=>{
     console.log(evento)
     evento.preventDefault()//Esta função irá impedir o comportamento padrão de botão
+    //console.log(escolaridade[0])
+    for(let itens of escolaridade){
+        // console.log(itens)
+        if(itens.checked){
+            alert(`Sua escolaridade é ${itens.value}`) // isto é um template string, outra forma de contatenar. 
+            // alert("Sua escolaridade é "+ itens.value)
+            // let opcao = confirm("tem certeza?")
+            // console.log(opcao)
+        }
+    }
 
-    console.log(escolaridade[1])
+    // for (let itens = 0; escolaridade < 3; itens ++){
+    //     console.log(itens)
+    // }
 })
 
+let escolha = document.querySelector("#escolha")
+let contrato = document.querySelector("#contrato")
+contrato.classList.add("d-none")
 
+escolha.addEventListener("change", ()=>{
+    if(escolha.checked){
+        contrato.classList.remove("d-none")
+        contrato.classList.add("d-block")
+    }
+    else{
+        contrato.classList.remove("d-block")
+        contrato.classList.add("d-none")
+    }
+})
+
+let concordo = document.querySelector("#concordo")
+
+concordo.addEventListener("change", ()=>{
+    if(concordo.checked){
+        alert("Parabéns!")
+    }
+    else{
+        alert("Que pena!")
+        let mensagem = prompt("diga porque desmarcou")// cria caixa de texto
+        console.log(mensagem)
+    }
+})
+
+let trabalho = document.querySelector(".form-select")
+
+trabalho.addEventListener("change", ()=>{
+    console.log(trabalho.options)
+
+    for(let itens of trabalho){
+        if(itens.selected){
+            // console.log(itens.value)
+            if(itens.value == "RH"){
+                trabalho.style.background ="cyan"
+                trabalho.style.color = "black"
+            }
+            if(itens.value == "tecnologia"){
+                trabalho.style.background ="green"
+                trabalho.style.color = "white"
+            }
+            if(itens.value == "fiananceiro"){
+                trabalho.style.background ="red"
+                trabalho.style.color = "white"
+            }
+            if(itens.value == ""){
+                trabalho.style.background = "white"
+                trabalho.style.color ="black"
+            }
+        }
+    }
+})

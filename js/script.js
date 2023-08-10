@@ -41,17 +41,22 @@ let endereco = document.querySelector("input[name=endereco]")
 
 endereco.addEventListener("blur", function(){
     console.log(endereco.value.length)
-    if (endereco.value.length >= 35){
-        alert("Texto demasiadamente grande")
+    if (endereco.value != ""){
+
+        if (endereco.value.length >= 35){
+            alert("Texto demasiadamente grande")
+            endereco.style.border = "2px solid red"
+        }
+
+        else { 
+            alert("endereço OK!")
+            endereco.style.border = "2px solid green"
+        }}
+
+    else {
         endereco.style.border = "2px solid red"
     }
-    if(endereco.value == ""){
-        endereco.style.border = "2px solid red"
-    }
-    else { 
-        alert("endereço OK!")
-        endereco.style.border = "2px solid yellow"
-    }
+    
 })
 
 // keyup vai pegando o que vamos digitamos
@@ -184,5 +189,34 @@ trabalho.addEventListener("change", ()=>{
                 trabalho.style.color ="black"
             }
         }
+    }
+})
+
+let cor = document.querySelector("#cor")
+cor.addEventListener("change", ()=>{
+    console.log(cor.value)
+    document.body.style.backgroundColor = cor.value
+})
+
+let mensagem = document.querySelector("#mensagem")
+let restante = document.querySelector("#restante")
+let limite = 20
+
+mensagem.addEventListener("keyup", ()=>{
+    console.log(mensagem.value.length)
+    restante.textContent = mensagem.value.length
+    // textContent = faz alteração do texto
+
+    mensagem.setAttribute("maxlength", limite)
+    //console.log(restante.parentNode)
+
+    if(restante.textContent == 20){
+        mensagem.classList.add("border-danger")
+        restante.parentNode.style.color = "red"
+        // parentNode significa que estamos pegando o elemento(nó da árvore DOM) pai e fazendo a modificação através do mesmo id ou classe do filho. 
+    }
+    else{
+        mensagem.classList.remove("border-danger")
+        restante.parentNode.style.color = "black"
     }
 })

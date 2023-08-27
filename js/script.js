@@ -33,7 +33,7 @@ idade.addEventListener("blur", function(){
     else{
         alert("infelizmente você não é de maior")
         // essa função irá redirecionar o usuario para um link predeterminado.
-        window.location.href = "https://getbootstrap.com/docs/5.3/components/card/"
+        window.location.href = "https://glaydson-alves.github.io/projeto-marketing-digital/"
     }
 })
 
